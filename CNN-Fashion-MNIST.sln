@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "CNN-Fashion-MNIST", "CNN-Fashion-MNIST.pyproj", "{B9742046-9DD8-48D6-9A7D-93A93A818FB6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9742046-9DD8-48D6-9A7D-93A93A818FB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9742046-9DD8-48D6-9A7D-93A93A818FB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD4C1D27-A260-4D39-89B8-2C824B44FF2F}
+	EndGlobalSection
+EndGlobal
