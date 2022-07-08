@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>b9742046-9dd8-48d6-9a7d-93a93a818fb6</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>CNN_Fashion_MNIST.py</StartupFile>
+    <StartupFile>Load_model.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,6 +22,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CNN_Fashion_MNIST.py" />
+    <Compile Include="ChessPredict.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Load_model.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
