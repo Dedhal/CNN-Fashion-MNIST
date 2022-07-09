@@ -43,7 +43,7 @@ shuffle(test)
 train = train[:train_size]
 test = test[:test_size]
 
-piece_symbols = 'prbnkqPRBNKQ'
+piece_symbols = ' pPnNbBrRqQkK'
 
 def fen_from_filename(filename):
     base = os.path.basename(filename)
@@ -83,7 +83,7 @@ def onehot_from_fen(fen):
 
     for char in fen:
         if char in '12345678':
-            output = np.append(output, np.tile(eye[12], (int(char), 1)), axis = 0)
+            output = np.append(output, np.tile(eye[0], (int(char), 1)), axis = 0)
         else:
             idx = piece_symbols.index(char)
             output = np.append(output, eye[idx].reshape((1, 13)), axis = 0)
@@ -94,10 +94,7 @@ def fen_from_onehot(onehot):
     output = ''
     for j in range(8):
         for i in range(8):
-            if onehot[j][i] == 12:
-                output += ' '
-            else:
-                output += piece_symbols[onehot[j][i]]
+            output += piece_symbols[onehot[j][i]]
         if j != 7:
             output += '-'
 

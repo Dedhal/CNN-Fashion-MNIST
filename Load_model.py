@@ -8,25 +8,7 @@ from skimage.util.shape import view_as_blocks
 
 test = 'test_real.jpeg'
 
-piece_symbols = 'prbnkqPRBNKQ'
-
-def images(images_path, image_height, image_width):
-    imges_list = []
-
-    for image in tqdm(os.listdir(images_path)):
-        path = os.path.join(images_path, image)
-
-        
-        image = cv2.resize(image, (image_height, image_width))
-        imges_list.append([np.array(image)])
-    shuffle(imges_list)
-
-    # Convert List into Array
-    array_image = np.array(imges_list)
-
-    # Removed Dimention
-    images = array_image[:,0,:,:]
-    return images
+piece_symbols = ' pPnNbBrRqQkK'
 
 def onehot_from_fen(fen):
     eye = np.eye(13)
@@ -46,10 +28,7 @@ def fen_from_onehot(onehot):
     output = ''
     for j in range(8):
         for i in range(8):
-            if onehot[j][i] == 12:
-                output += ' '
-            else:
-                output += piece_symbols[onehot[j][i]]
+            output += piece_symbols[onehot[j][i]]
         if j != 7:
             output += '-'
 
@@ -57,10 +36,6 @@ def fen_from_onehot(onehot):
         output = output.replace(' ' * i, str(i))
 
     return output
-
-def fen_from_filename(filename):
-    base = os.path.basename(filename)
-    return os.path.splitext(base)[0]
 
 def process_image(img):
     downsample_size = 200
@@ -72,16 +47,6 @@ def process_image(img):
     tiles = tiles.squeeze(axis=2)
     return tiles.reshape(64, square_size, square_size, 3)
 
-def train_gen(features, labels, batch_size):
-    for i, img in enumerate(features):
-        y = onehot_from_fen(fen_from_filename(img))
-        x = process_image(img)
-        yield x, y
-
-def pred_gen(features, batch_size):
-    for i, img in enumerate(features):
-        yield process_image(img)
-
 print("Loading model...")
 model = keras.models.load_model('chess_model_TD100000_VD20000_Basic-CNN.h5py')
 print("Prediction")
@@ -91,4 +56,5 @@ print("Prediction")
 
 res = model.predict(process_image(test)).argmax(axis=1).reshape(-1, 8, 8)
 
+print(res[0])
 print(fen_from_onehot(res[0]))
